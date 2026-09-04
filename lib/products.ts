@@ -105,3 +105,17 @@ export const products: Product[] = [
     price: "₺2.590",
   },
 ];
+export function searchProducts(query: string): Product[] {
+  const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
+
+  if (!normalizedQuery) {
+    return products;
+  }
+
+  return products.filter((product) => {
+    return (
+      product.name.toLocaleLowerCase("tr-TR").includes(normalizedQuery) ||
+      product.category.toLocaleLowerCase("tr-TR").includes(normalizedQuery)
+    );
+  });
+}
