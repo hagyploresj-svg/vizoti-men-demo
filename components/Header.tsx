@@ -1,114 +1,132 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Search, User, Heart, ShoppingBag, Menu } from "lucide-react";
-import { useCart } from "@/context/CartContext";
-import { useFavorites } from "@/context/FavoritesContext";
-import { categories } from "@/lib/products";
-import MobileMenu from "./MobileMenu";
-import SearchOverlay from "./SearchOverlay";
+import { Menu, Search, ShoppingBag, X } from "lucide-react";
+
+const navItems = [
+  { label: "YENİ", href: "/" },
+  { label: "SHOP", href: "/" },
+  { label: "JEAN", href: "/" },
+  { label: "CEKET", href: "/" },
+  { label: "GÖMLEK", href: "/" },
+  { label: "TRİKO", href: "/" },
+];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const { count, openDrawer } = useCart();
-  const { count: favCount } = useFavorites();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
-      <div className="bg-ink text-paper text-center text-xs sm:text-sm py-2 px-4 tracking-wide">
-        Yeni sezon ürünlerinde özel fırsatlar
+      <div className="bg-[#111111] px-4 py-2 text-center text-[10px] uppercase tracking-[0.22em] text-white/75">
+        2.500 TL ve üzeri siparişlerde ücretsiz kargo
       </div>
-      <header
-        className={`sticky top-0 z-40 bg-paper/95 backdrop-blur transition-shadow ${
-          scrolled ? "shadow-[0_1px_0_0_rgba(28,27,26,0.12)]" : ""
-        }`}
-      >
-        <div className="container-page flex items-center justify-between h-16 lg:h-20">
+
+      <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f5f2eb]/95 backdrop-blur">
+        <div className="container-page flex h-[76px] items-center justify-between">
           <button
-            className="lg:hidden -ml-2 p-2 text-ink"
+            type="button"
+            onClick={() => setMenuOpen(true)}
+            className="flex items-center lg:hidden"
             aria-label="Menüyü aç"
-            onClick={() => setMobileOpen(true)}
           >
-            <Menu size={24} strokeWidth={1.5} />
+            <Menu size={22} strokeWidth={1.5} />
           </button>
 
-          <Link
-            href="/"
-            className="font-display font-black text-2xl lg:text-3xl tracking-tightest text-ink"
-          >
-            MASTER JEANS
-          </Link>
-
-          <nav className="hidden lg:flex items-center gap-8 font-sans text-sm">
-            <Link href="/kategori/yeni-gelenler" className="hover:text-denim transition-colors">
-              Yeni Gelenler
-            </Link>
-            {categories.map((c) => (
+          <nav className="hidden items-center gap-7 lg:flex">
+            {navItems.slice(0, 3).map((item) => (
               <Link
-                key={c.slug}
-                href={`/kategori/${c.slug}`}
-                className="hover:text-denim transition-colors"
+                key={item.label}
+                href={item.href}
+                className="text-[11px] font-medium tracking-[0.16em] transition-opacity hover:opacity-50"
               >
-                {c.name}
+                {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-1 sm:gap-2">
-            <button
-              className="p-2 text-ink hover:text-denim transition-colors"
-              aria-label="Ara"
-              onClick={() => setSearchOpen(true)}
-            >
-              <Search size={22} strokeWidth={1.5} />
+          <Link
+            href="/"
+            className="absolute left-1/2 -translate-x-1/2 text-center"
+          >
+            <span className="block text-xl font-black tracking-[0.17em] sm:text-2xl">
+              VIZOTI
+            </span>
+            <span className="mt-[-2px] block text-[8px] tracking-[0.48em] text-black/55">
+              MEN
+            </span>
+          </Link>
+
+          <nav className="hidden items-center gap-7 lg:flex">
+            {navItems.slice(3).map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-[11px] font-medium tracking-[0.16em] transition-opacity hover:opacity-50"
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            <button type="button" aria-label="Ara">
+              <Search size={18} strokeWidth={1.4} />
             </button>
-            <Link
-              href="/hesabim"
-              className="p-2 text-ink hover:text-denim transition-colors hidden sm:inline-flex"
-              aria-label="Hesabım"
-            >
-              <User size={22} strokeWidth={1.5} />
-            </Link>
-            <Link
-              href="/favoriler"
-              className="p-2 text-ink hover:text-denim transition-colors relative"
-              aria-label="Favorilerim"
-            >
-              <Heart size={22} strokeWidth={1.5} />
-              {favCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-denim text-paper text-[10px] leading-none rounded-full h-4 w-4 flex items-center justify-center">
-                  {favCount}
-                </span>
-              )}
-            </Link>
-            <button
-              className="p-2 text-ink hover:text-denim transition-colors relative"
-              aria-label="Sepetim"
-              onClick={openDrawer}
-            >
-              <ShoppingBag size={22} strokeWidth={1.5} />
-              {count > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-denim text-paper text-[10px] leading-none rounded-full h-4 w-4 flex items-center justify-center">
-                  {count}
-                </span>
-              )}
+
+            <button type="button" aria-label="Sepet">
+              <ShoppingBag size={18} strokeWidth={1.4} />
             </button>
+          </nav>
+
+          <div className="flex items-center gap-4 lg:hidden">
+            <Search size={19} strokeWidth={1.4} />
+            <ShoppingBag size={19} strokeWidth={1.4} />
           </div>
         </div>
       </header>
 
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {menuOpen && (
+        <div className="fixed inset-0 z-[100] bg-[#111111] text-[#f5f2eb] lg:hidden">
+          <div className="flex items-center justify-between border-b border-white/15 px-6 py-6">
+            <div>
+              <span className="block text-xl font-black tracking-[0.17em]">
+                VIZOTI
+              </span>
+              <span className="text-[8px] tracking-[0.45em] text-white/50">
+                MEN
+              </span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Menüyü kapat"
+            >
+              <X size={25} strokeWidth={1.3} />
+            </button>
+          </div>
+
+          <nav className="flex flex-col px-6 py-10">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-white/10 py-5 text-3xl font-semibold tracking-tight"
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="mt-10 text-xs uppercase tracking-[0.25em] text-white/50"
+            >
+              İletişim
+            </Link>
+          </nav>
+        </div>
+      )}
     </>
   );
 }
