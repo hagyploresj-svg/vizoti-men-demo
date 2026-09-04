@@ -1,5 +1,7 @@
 import type { Product } from "@/lib/types";
 
+const vizotiImage = "/images/vizoti-product.svg";
+
 export const products: Product[] = [
   {
     id: "1",
@@ -7,7 +9,7 @@ export const products: Product[] = [
     name: "Milano Ceket",
     description: "Modern kesimli, şehir stiline uygun premium ceket.",
     price: 4990,
-    images: [],
+    images: [vizotiImage],
     category: "ceket",
     color: "#111111",
     colorName: "Siyah",
@@ -18,15 +20,13 @@ export const products: Product[] = [
     fabric: "Premium dokulu kumaş",
     care: "Kuru temizleme önerilir.",
   },
-
   {
     id: "2",
     slug: "roma-pantolon",
     name: "Roma Pantolon",
-    description:
-      "Rahat kalıp ve modern görünümü bir araya getiren şehir pantolonu.",
+    description: "Rahat kalıp ve modern görünümü bir araya getiren şehir pantolonu.",
     price: 2490,
-    images: [],
+    images: [vizotiImage],
     category: "alt-giyim",
     color: "#C8B89A",
     colorName: "Bej",
@@ -37,14 +37,13 @@ export const products: Product[] = [
     fabric: "Pamuk karışımlı premium kumaş",
     care: "30°C hassas programda yıkama önerilir.",
   },
-
   {
     id: "3",
     slug: "como-gomlek",
     name: "Como Gömlek",
     description: "Minimal çizgilere sahip zamansız erkek gömleği.",
     price: 1990,
-    images: [],
+    images: [vizotiImage],
     category: "gomlek",
     color: "#F1F0EB",
     colorName: "Beyaz",
@@ -55,15 +54,13 @@ export const products: Product[] = [
     fabric: "%100 pamuk",
     care: "30°C makinede yıkama önerilir.",
   },
-
   {
     id: "4",
     slug: "siena-triko",
     name: "Siena Triko",
-    description:
-      "Yumuşak dokusu ve minimal çizgileriyle yeni sezon triko.",
+    description: "Yumuşak dokusu ve minimal çizgileriyle yeni sezon triko.",
     price: 2290,
-    images: [],
+    images: [vizotiImage],
     category: "tshirt",
     color: "#E3DBCE",
     colorName: "Krem",
@@ -74,16 +71,14 @@ export const products: Product[] = [
     fabric: "Yumuşak dokulu premium triko",
     care: "Düşük ısıda hassas yıkama önerilir.",
   },
-
   {
     id: "5",
     slug: "torino-blazer",
     name: "Torino Blazer",
-    description:
-      "Keskin silüetiyle modern erkek stilini tamamlayan blazer.",
+    description: "Keskin silüetiyle modern erkek stilini tamamlayan blazer.",
     price: 5490,
     oldPrice: 6490,
-    images: [],
+    images: [vizotiImage],
     category: "ceket",
     color: "#343434",
     colorName: "Antrasit",
@@ -95,15 +90,13 @@ export const products: Product[] = [
     fabric: "Premium yün karışımlı kumaş",
     care: "Kuru temizleme önerilir.",
   },
-
   {
     id: "6",
     slug: "firenze-polo",
     name: "Firenze Polo",
-    description:
-      "Günlük kombinlere uyum sağlayan modern kesimli polo.",
+    description: "Günlük kombinlere uyum sağlayan modern kesimli polo.",
     price: 1790,
-    images: [],
+    images: [vizotiImage],
     category: "tshirt",
     color: "#172033",
     colorName: "Lacivert",
@@ -114,15 +107,13 @@ export const products: Product[] = [
     fabric: "Pamuk ve viskon karışımı",
     care: "30°C hassas yıkama önerilir.",
   },
-
   {
     id: "7",
     slug: "napoli-overshirt",
     name: "Napoli Overshirt",
-    description:
-      "Katmanlı şehir kombinleri için tasarlanmış modern overshirt.",
+    description: "Katmanlı şehir kombinleri için tasarlanmış modern overshirt.",
     price: 3490,
-    images: [],
+    images: [vizotiImage],
     category: "ceket",
     color: "#665244",
     colorName: "Kahve",
@@ -133,15 +124,13 @@ export const products: Product[] = [
     fabric: "Pamuk karışımlı dokulu kumaş",
     care: "30°C hassas programda yıkama önerilir.",
   },
-
   {
     id: "8",
     slug: "venezia-pantolon",
     name: "Venezia Pantolon",
-    description:
-      "Rahat kalıp ve şık görünümü bir araya getiren modern pantolon.",
+    description: "Rahat kalıp ve şık görünümü bir araya getiren modern pantolon.",
     price: 2690,
-    images: [],
+    images: [vizotiImage],
     category: "alt-giyim",
     color: "#111111",
     colorName: "Siyah",
@@ -152,15 +141,13 @@ export const products: Product[] = [
     fabric: "Premium pamuk karışımlı kumaş",
     care: "30°C hassas yıkama önerilir.",
   },
-
   {
     id: "9",
     slug: "monaco-takim",
     name: "Monaco Takım",
-    description:
-      "Modern kalıbı ve güçlü silüetiyle premium iki parçalı takım.",
+    description: "Modern kalıbı ve güçlü silüetiyle premium iki parçalı takım.",
     price: 7990,
-    images: [],
+    images: [vizotiImage],
     category: "takim",
     color: "#252525",
     colorName: "Füme",
@@ -171,15 +158,13 @@ export const products: Product[] = [
     fabric: "Premium yün karışımlı takım kumaşı",
     care: "Yalnızca kuru temizleme önerilir.",
   },
-
   {
     id: "10",
     slug: "capri-denim",
     name: "Capri Denim",
-    description:
-      "Modern kesimli, günlük kullanıma uygun premium denim pantolon.",
+    description: "Modern kesimli, günlük kullanıma uygun premium denim pantolon.",
     price: 2890,
-    images: [],
+    images: [vizotiImage],
     category: "jean",
     color: "#26394E",
     colorName: "Koyu Mavi",
@@ -190,15 +175,13 @@ export const products: Product[] = [
     fabric: "Premium pamuk denim",
     care: "Ters çevirerek 30°C'de yıkama önerilir.",
   },
-
   {
     id: "11",
     slug: "verona-gomlek",
     name: "Verona Gömlek",
-    description:
-      "Rahat kalıbı ve sade tasarımıyla modern günlük gömlek.",
+    description: "Rahat kalıbı ve sade tasarımıyla modern günlük gömlek.",
     price: 2190,
-    images: [],
+    images: [vizotiImage],
     category: "gomlek",
     color: "#B8B3A9",
     colorName: "Taş",
@@ -209,15 +192,13 @@ export const products: Product[] = [
     fabric: "%100 pamuk",
     care: "30°C makinede yıkama önerilir.",
   },
-
   {
     id: "12",
     slug: "bari-triko-polo",
     name: "Bari Triko Polo",
-    description:
-      "Minimal tasarımıyla günlük ve akşam kombinlerine uyum sağlayan polo.",
+    description: "Minimal tasarımlı modern erkek polo.",
     price: 1990,
-    images: [],
+    images: [vizotiImage],
     category: "tshirt",
     color: "#D4CCBD",
     colorName: "Kum",
@@ -231,30 +212,12 @@ export const products: Product[] = [
 ];
 
 export const categories = [
-  {
-    slug: "jean" as const,
-    name: "Jean",
-  },
-  {
-    slug: "tshirt" as const,
-    name: "Triko & Polo",
-  },
-  {
-    slug: "gomlek" as const,
-    name: "Gömlek",
-  },
-  {
-    slug: "ceket" as const,
-    name: "Ceket",
-  },
-  {
-    slug: "takim" as const,
-    name: "Takım Elbise",
-  },
-  {
-    slug: "alt-giyim" as const,
-    name: "Pantolon",
-  },
+  { slug: "jean" as const, name: "Jean" },
+  { slug: "tshirt" as const, name: "Triko & Polo" },
+  { slug: "gomlek" as const, name: "Gömlek" },
+  { slug: "ceket" as const, name: "Ceket" },
+  { slug: "takim" as const, name: "Takım Elbise" },
+  { slug: "alt-giyim" as const, name: "Pantolon" },
 ];
 
 export const categoryNames: Record<string, string> = {
@@ -278,28 +241,19 @@ export function getProductsByCategory(slug: string): Product[] {
 export function searchProducts(query: string): Product[] {
   const q = query.trim().toLocaleLowerCase("tr-TR");
 
-  if (!q) {
-    return products;
-  }
+  if (!q) return products;
 
   return products.filter((product) => {
-    const name = product.name.toLocaleLowerCase("tr-TR");
-    const description = product.description.toLocaleLowerCase("tr-TR");
-    const category = product.category.toLocaleLowerCase("tr-TR");
-    const color = product.colorName.toLocaleLowerCase("tr-TR");
-
     return (
-      name.includes(q) ||
-      description.includes(q) ||
-      category.includes(q) ||
-      color.includes(q)
+      product.name.toLocaleLowerCase("tr-TR").includes(q) ||
+      product.description.toLocaleLowerCase("tr-TR").includes(q) ||
+      product.category.toLocaleLowerCase("tr-TR").includes(q) ||
+      product.colorName.toLocaleLowerCase("tr-TR").includes(q)
     );
   });
 }
 
-export function getProductBySlug(
-  slug: string
-): Product | undefined {
+export function getProductBySlug(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
