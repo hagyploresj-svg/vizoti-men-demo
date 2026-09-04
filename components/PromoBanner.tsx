@@ -1,30 +1,32 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function PromoBanner() {
   return (
-    <section className="relative">
-      <div className="relative h-[60vh] min-h-[420px] max-h-[640px] w-full overflow-hidden bg-ink">
-        <Image
-          src="https://picsum.photos/seed/master-jeans-promo/1800/1000"
-          alt="Master Jeans denim koleksiyonu"
-          fill
-          sizes="100vw"
-          className="object-cover opacity-75"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/30 to-transparent" />
-        <div className="container-page relative h-full flex flex-col justify-center text-paper">
-          <p className="font-display font-black text-4xl sm:text-5xl lg:text-6xl leading-[0.95] tracking-tightest max-w-lg">
-            DENİMİN YENİ HALİ
+    <section className="bg-[#172033] text-paper">
+      <div className="container-page grid min-h-[460px] items-center gap-10 py-20 lg:grid-cols-2">
+        <div>
+          <p className="text-xs uppercase tracking-[0.35em] text-paper/50">
+            MASTER JEANS / DENIM
           </p>
-          <p className="mt-4 text-paper/85 max-w-sm">
-            Master Jeans yeni sezon denim koleksiyonu.
+
+          <h2 className="mt-5 font-display text-5xl font-black leading-[0.9] tracking-tightest sm:text-6xl lg:text-7xl">
+            DENİMİN
+            <br />
+            YENİ HALİ
+          </h2>
+        </div>
+
+        <div className="lg:border-l lg:border-paper/15 lg:pl-12">
+          <p className="max-w-md text-lg leading-relaxed text-paper/70">
+            Günlük stil için yeniden yorumlanan modern kesimler,
+            zamansız renkler ve güçlü denim parçalar.
           </p>
+
           <Link
             href="/kategori/jean"
-            className="mt-7 w-fit px-6 py-3.5 bg-paper text-ink text-sm tracking-wide hover:bg-paperdim transition-colors"
+            className="mt-8 inline-block border-b border-paper pb-2 text-sm tracking-widest"
           >
-            Jean Koleksiyonunu Keşfet
+            KOLEKSİYONU KEŞFET →
           </Link>
         </div>
       </div>
