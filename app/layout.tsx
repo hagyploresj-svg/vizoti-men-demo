@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { CartProvider } from "@/context/CartContext";
+import { FavoritesProvider } from "@/context/FavoritesContext";
 
 export const metadata: Metadata = {
   title: "VIZOTI MEN | Modern Erkek Giyim",
@@ -17,9 +20,13 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className="bg-[#f5f2eb] text-[#111111] antialiased">
-        <Header />
-        {children}
-        <Footer />
+        <FavoritesProvider>
+          <CartProvider>
+            <Header />
+            {children}
+            <Footer />
+          </CartProvider>
+        </FavoritesProvider>
       </body>
     </html>
   );
