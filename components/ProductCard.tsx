@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type ProductCardProps = {
+  slug: string;
   name: string;
   category?: string;
   price: string;
@@ -20,6 +22,7 @@ const backgrounds = [
 ];
 
 export default function ProductCard({
+  slug,
   name,
   category = "VIZOTI MEN",
   price,
@@ -28,25 +31,54 @@ export default function ProductCard({
 }: ProductCardProps) {
   const [favorite, setFavorite] = useState(false);
 
-  const dark = index % backgrounds.length === 2 ||
-               index % backgrounds.length === 5;
+  const dark =
+    index % backgrounds.length === 2 ||
+    index % backgrounds.length === 5;
 
   return (
     <article className="group">
-      <div
-        className={`relative flex aspect-[3/4] overflow-hidden ${
-          backgrounds[index % backgrounds.length]
-        }`}
-      >
-        <div className="absolute left-5 top-5">
-          <span
-            className={`text-[9px] uppercase tracking-[0.25em] ${
-              dark ? "text-white/50" : "text-black/45"
+      <div className="relative">
+        <Link href={`/urun/${slug}`} className="block">
+          <div
+            className={`relative flex aspect-[3/4] overflow-hidden ${
+              backgrounds[index % backgrounds.length]
             }`}
           >
-            New Season
-          </span>
-        </div>
+            <div className="absolute left-5 top-5">
+              <span
+                className={`text-[9px] uppercase tracking-[0.25em] ${
+                  dark ? "text-white/50" : "text-black/45"
+                }`}
+              >
+                New Season
+              </span>
+            </div>
+
+            <div className="flex w-full items-end p-6 sm:p-8">
+              <div
+                className={`transition-transform duration-500 group-hover:-translate-y-2 ${
+                  dark ? "text-white" : "text-black"
+                }`}
+              >
+                <p className="text-[9px] uppercase tracking-[0.3em] opacity-45">
+                  {category}
+                </p>
+
+                <p className="mt-3 text-3xl font-black uppercase leading-[0.9] tracking-[-0.04em] sm:text-4xl">
+                  {name}
+                </p>
+              </div>
+            </div>
+
+            <div
+              className={`pointer-events-none absolute -bottom-12 -right-5 text-[10rem] font-black leading-none opacity-[0.035] transition-transform duration-700 group-hover:scale-110 sm:text-[13rem] ${
+                dark ? "text-white" : "text-black"
+              }`}
+            >
+              V
+            </div>
+          </div>
+        </Link>
 
         <button
           type="button"
@@ -58,53 +90,31 @@ export default function ProductCard({
         >
           {favorite ? "♥" : "♡"}
         </button>
+      </div>
 
-        <div className="flex w-full items-end p-6 sm:p-8">
-          <div
-            className={`transition-transform duration-500 group-hover:-translate-y-2 ${
-              dark ? "text-white" : "text-black"
-            }`}
-          >
-            <p className="text-[9px] uppercase tracking-[0.3em] opacity-45">
+      <Link href={`/urun/${slug}`} className="block">
+        <div className="flex items-start justify-between gap-4 py-4">
+          <div>
+            <h3 className="text-sm font-medium uppercase tracking-[0.04em]">
+              {name}
+            </h3>
+
+            <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-black/40">
               {category}
             </p>
+          </div>
 
-            <p className="mt-3 text-3xl font-black uppercase leading-[0.9] tracking-[-0.04em] sm:text-4xl">
-              {name}
-            </p>
+          <div className="shrink-0 text-right">
+            <p className="text-sm font-medium">{price}</p>
+
+            {oldPrice && (
+              <p className="mt-1 text-xs text-black/35 line-through">
+                {oldPrice}
+              </p>
+            )}
           </div>
         </div>
-
-        <div
-          className={`pointer-events-none absolute -bottom-12 -right-5 text-[10rem] font-black leading-none opacity-[0.035] transition-transform duration-700 group-hover:scale-110 sm:text-[13rem] ${
-            dark ? "text-white" : "text-black"
-          }`}
-        >
-          V
-        </div>
-      </div>
-
-      <div className="flex items-start justify-between gap-4 py-4">
-        <div>
-          <h3 className="text-sm font-medium uppercase tracking-[0.04em]">
-            {name}
-          </h3>
-
-          <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-black/40">
-            {category}
-          </p>
-        </div>
-
-        <div className="shrink-0 text-right">
-          <p className="text-sm font-medium">{price}</p>
-
-          {oldPrice && (
-            <p className="mt-1 text-xs text-black/35 line-through">
-              {oldPrice}
-            </p>
-          )}
-        </div>
-      </div>
+      </Link>
     </article>
   );
 }
