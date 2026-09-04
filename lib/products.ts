@@ -30,3 +30,17 @@ export function getProductsByCategory(slug: string): Product[] {
       categoryName.toLocaleLowerCase("tr-TR")
   );
 }
+export function searchProducts(query: string): Product[] {
+  const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
+
+  if (!normalizedQuery) {
+    return products;
+  }
+
+  return products.filter((product) => {
+    return (
+      product.name.toLocaleLowerCase("tr-TR").includes(normalizedQuery) ||
+      product.category.toLocaleLowerCase("tr-TR").includes(normalizedQuery)
+    );
+  });
+}
