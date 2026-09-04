@@ -12,7 +12,6 @@ export const products: Product[] = [
     color: "Siyah",
     sizes: ["S", "M", "L", "XL"],
     isNew: true,
-    isFeatured: true,
   },
   {
     id: "2",
@@ -20,12 +19,12 @@ export const products: Product[] = [
     name: "Roma Pantolon",
     category: "pantolon",
     price: 2490,
-    description: "Rahat kalıp ve modern görünümü bir araya getiren şehir pantolonu.",
+    description:
+      "Rahat kalıp ve modern görünümü bir araya getiren şehir pantolonu.",
     images: [],
     color: "Bej",
     sizes: ["30", "32", "34", "36"],
     isNew: true,
-    isFeatured: true,
   },
   {
     id: "3",
@@ -38,7 +37,6 @@ export const products: Product[] = [
     color: "Beyaz",
     sizes: ["S", "M", "L", "XL"],
     isNew: true,
-    isFeatured: true,
   },
   {
     id: "4",
@@ -51,7 +49,6 @@ export const products: Product[] = [
     color: "Krem",
     sizes: ["S", "M", "L", "XL"],
     isNew: true,
-    isFeatured: true,
   },
   {
     id: "5",
@@ -60,12 +57,12 @@ export const products: Product[] = [
     category: "ceket",
     price: 5490,
     oldPrice: 6490,
-    description: "Keskin silüetiyle modern erkek stilini tamamlayan blazer.",
+    description:
+      "Keskin silüetiyle modern erkek stilini tamamlayan blazer.",
     images: [],
     color: "Antrasit",
     sizes: ["S", "M", "L", "XL"],
     isNew: false,
-    isFeatured: true,
   },
   {
     id: "6",
@@ -78,7 +75,6 @@ export const products: Product[] = [
     color: "Lacivert",
     sizes: ["S", "M", "L", "XL"],
     isNew: false,
-    isFeatured: false,
   },
   {
     id: "7",
@@ -86,12 +82,12 @@ export const products: Product[] = [
     name: "Napoli Overshirt",
     category: "ceket",
     price: 3490,
-    description: "Katmanlı şehir kombinleri için tasarlanmış modern overshirt.",
+    description:
+      "Katmanlı şehir kombinleri için tasarlanmış modern overshirt.",
     images: [],
     color: "Kahve",
     sizes: ["S", "M", "L", "XL"],
     isNew: true,
-    isFeatured: false,
   },
   {
     id: "8",
@@ -99,12 +95,12 @@ export const products: Product[] = [
     name: "Venezia Pantolon",
     category: "pantolon",
     price: 2690,
-    description: "Rahat kalıp ve şık görünümü bir araya getiren pantolon.",
+    description:
+      "Rahat kalıp ve şık görünümü bir araya getiren pantolon.",
     images: [],
     color: "Siyah",
     sizes: ["30", "32", "34", "36"],
     isNew: false,
-    isFeatured: false,
   },
 ];
 
@@ -124,28 +120,43 @@ export const categoryNames: Record<string, string> = {
 };
 
 export function getProductsByCategory(slug: string): Product[] {
-  if (slug === "yeni-gelenler") return products;
+  if (slug === "yeni-gelenler") {
+    return products;
+  }
+
   return products.filter((product) => product.category === slug);
 }
 
 export function searchProducts(query: string): Product[] {
-  const q = query.trim().toLocaleLowerCase("tr-TR");
+  const normalizedQuery = query
+    .trim()
+    .toLocaleLowerCase("tr-TR");
 
-  if (!q) return products;
+  if (!normalizedQuery) {
+    return products;
+  }
 
   return products.filter((product) => {
+    const productName = product.name.toLocaleLowerCase("tr-TR");
+    const productCategory = product.category.toLocaleLowerCase("tr-TR");
+
     return (
-      product.name.toLocaleLowerCase("tr-TR").includes(q) ||
-      product.category.toLocaleLowerCase("tr-TR").includes(q)
+      productName.includes(normalizedQuery) ||
+      productCategory.includes(normalizedQuery)
     );
   });
 }
 
-export function getProductBySlug(slug: string): Product | undefined {
+export function getProductBySlug(
+  slug: string
+): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
-export function getRelatedProducts(product: Product, limit = 4): Product[] {
+export function getRelatedProducts(
+  product: Product,
+  limit = 4
+): Product[] {
   return products
     .filter(
       (item) =>
