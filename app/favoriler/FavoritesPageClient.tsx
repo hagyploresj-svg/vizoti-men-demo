@@ -7,7 +7,9 @@ import ProductGrid from "@/components/ProductGrid";
 
 export default function FavoritesPageClient() {
   const { favoriteIds } = useFavorites();
-  const favoriteProducts = products.filter((p) => favoriteIds.includes(p.id));
+ const favoriteProducts = products.filter((p) =>
+  favoriteIds.includes(String(p.id))
+);
 
   return (
     <div className="container-page py-10 lg:py-14">
