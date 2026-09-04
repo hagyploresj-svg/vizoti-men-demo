@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200">
+  <rect width="900" height="1200" fill="#d8d1c5"/>
+  <text x="450" y="560" text-anchor="middle"
+    font-family="Arial" font-size="90" font-weight="700"
+    letter-spacing="14" fill="#111111">
+    VIZOTI
+  </text>
+  <text x="450" y="635" text-anchor="middle"
+    font-family="Arial" font-size="28"
+    letter-spacing="16" fill="#55514a">
+    MEN
+  </text>
+</svg>
