@@ -5,7 +5,7 @@ export const products: Product[] = [
     id: "1",
     slug: "milano-ceket",
     name: "Milano Ceket",
-    category: "Ceket",
+    category: "ceket",
     price: 4990,
     oldPrice: undefined,
     description: "Modern kesimli, şehir stiline uygun premium ceket.",
@@ -21,10 +21,10 @@ export const products: Product[] = [
     id: "2",
     slug: "roma-pantolon",
     name: "Roma Pantolon",
-    category: "Pantolon",
+    category: "pantolon",
     price: 2490,
     oldPrice: undefined,
-    description: "Rahat kalıp, modern görünüm ve günlük kullanım için tasarlandı.",
+    description: "Rahat kalıp ve modern görünümü bir araya getiren şehir pantolonu.",
     images: [],
     color: "Bej",
     colors: ["Bej", "Siyah"],
@@ -37,10 +37,10 @@ export const products: Product[] = [
     id: "3",
     slug: "como-gomlek",
     name: "Como Gömlek",
-    category: "Gömlek",
+    category: "gomlek",
     price: 1990,
     oldPrice: undefined,
-    description: "Minimal çizgiler ve zamansız erkek stili.",
+    description: "Minimal çizgilere sahip zamansız erkek gömleği.",
     images: [],
     color: "Beyaz",
     colors: ["Beyaz", "Siyah"],
@@ -53,7 +53,7 @@ export const products: Product[] = [
     id: "4",
     slug: "siena-triko",
     name: "Siena Triko",
-    category: "Triko",
+    category: "triko",
     price: 2290,
     oldPrice: undefined,
     description: "Yeni sezon için sade ve güçlü triko tasarımı.",
@@ -69,10 +69,10 @@ export const products: Product[] = [
     id: "5",
     slug: "torino-blazer",
     name: "Torino Blazer",
-    category: "Ceket",
+    category: "ceket",
     price: 5490,
     oldPrice: 6490,
-    description: "Keskin silüetli modern blazer.",
+    description: "Keskin silüetiyle modern erkek stilini tamamlayan blazer.",
     images: [],
     color: "Antrasit",
     colors: ["Antrasit", "Siyah"],
@@ -85,10 +85,10 @@ export const products: Product[] = [
     id: "6",
     slug: "firenze-polo",
     name: "Firenze Polo",
-    category: "Triko",
+    category: "triko",
     price: 1790,
     oldPrice: undefined,
-    description: "Günlük kombinlere uygun modern polo.",
+    description: "Günlük kombinlere uyum sağlayan modern polo.",
     images: [],
     color: "Lacivert",
     colors: ["Lacivert", "Krem"],
@@ -101,10 +101,10 @@ export const products: Product[] = [
     id: "7",
     slug: "napoli-overshirt",
     name: "Napoli Overshirt",
-    category: "Ceket",
+    category: "ceket",
     price: 3490,
     oldPrice: undefined,
-    description: "Katmanlı kombinler için modern overshirt.",
+    description: "Katmanlı şehir kombinleri için tasarlanmış modern overshirt.",
     images: [],
     color: "Kahve",
     colors: ["Kahve", "Siyah"],
@@ -117,10 +117,10 @@ export const products: Product[] = [
     id: "8",
     slug: "venezia-pantolon",
     name: "Venezia Pantolon",
-    category: "Pantolon",
+    category: "pantolon",
     price: 2690,
     oldPrice: undefined,
-    description: "Rahat ama şık şehir pantolonu.",
+    description: "Rahat kalıp ve şık görünümü bir araya getiren pantolon.",
     images: [],
     color: "Siyah",
     colors: ["Siyah", "Bej"],
@@ -151,34 +151,32 @@ export function getProductsByCategory(slug: string): Product[] {
     return products;
   }
 
-  const categoryName = categoryNames[slug];
-
-  if (!categoryName) {
-    return [];
-  }
-
-  return products.filter(
-    (product) =>
-      product.category.toLocaleLowerCase("tr-TR") ===
-      categoryName.toLocaleLowerCase("tr-TR")
-  );
+  return products.filter((product) => product.category === slug);
 }
 
 export function searchProducts(query: string): Product[] {
-  const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
+  const normalizedQuery = query
+    .trim()
+    .toLocaleLowerCase("tr-TR");
 
   if (!normalizedQuery) {
     return products;
   }
 
   return products.filter((product) => {
+    const productName = product.name.toLocaleLowerCase("tr-TR");
+    const productCategory = product.category.toLocaleLowerCase("tr-TR");
+
     return (
-      product.name.toLocaleLowerCase("tr-TR").includes(normalizedQuery) ||
-      product.category.toLocaleLowerCase("tr-TR").includes(normalizedQuery)
+      productName.includes(normalizedQuery) ||
+      productCategory.includes(normalizedQuery)
     );
   });
 }
-export function getProductBySlug(slug: string): Product | undefined {
+
+export function getProductBySlug(
+  slug: string
+): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
