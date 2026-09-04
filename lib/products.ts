@@ -9,9 +9,14 @@ export const products: Product[] = [
     price: 4990,
     description: "Modern kesimli, şehir stiline uygun premium ceket.",
     images: [],
-    color: "Siyah",
+    color: "#111111",
+    colorName: "Siyah",
     sizes: ["S", "M", "L", "XL"],
+    soldOutSizes: [],
     isNew: true,
+    isBestSeller: true,
+    fabric: "Premium dokulu kumaş",
+    care: "30°C hassas yıkama önerilir.",
   },
   {
     id: "2",
@@ -22,9 +27,14 @@ export const products: Product[] = [
     description:
       "Rahat kalıp ve modern görünümü bir araya getiren şehir pantolonu.",
     images: [],
-    color: "Bej",
+    color: "#C8B89A",
+    colorName: "Bej",
     sizes: ["30", "32", "34", "36"],
+    soldOutSizes: [],
     isNew: true,
+    isBestSeller: true,
+    fabric: "Pamuk karışımlı premium kumaş",
+    care: "30°C hassas yıkama önerilir.",
   },
   {
     id: "3",
@@ -34,9 +44,14 @@ export const products: Product[] = [
     price: 1990,
     description: "Minimal çizgilere sahip zamansız erkek gömleği.",
     images: [],
-    color: "Beyaz",
+    color: "#F4F4F0",
+    colorName: "Beyaz",
     sizes: ["S", "M", "L", "XL"],
+    soldOutSizes: [],
     isNew: true,
+    isBestSeller: false,
+    fabric: "%100 pamuk",
+    care: "30°C makinede yıkama.",
   },
   {
     id: "4",
@@ -46,9 +61,14 @@ export const products: Product[] = [
     price: 2290,
     description: "Yeni sezon için sade ve güçlü triko tasarımı.",
     images: [],
-    color: "Krem",
+    color: "#E8DFD0",
+    colorName: "Krem",
     sizes: ["S", "M", "L", "XL"],
+    soldOutSizes: ["S"],
     isNew: true,
+    isBestSeller: true,
+    fabric: "Yumuşak dokulu triko karışımı",
+    care: "Düşük ısıda hassas yıkama.",
   },
   {
     id: "5",
@@ -60,9 +80,14 @@ export const products: Product[] = [
     description:
       "Keskin silüetiyle modern erkek stilini tamamlayan blazer.",
     images: [],
-    color: "Antrasit",
+    color: "#343434",
+    colorName: "Antrasit",
     sizes: ["S", "M", "L", "XL"],
+    soldOutSizes: ["XL"],
     isNew: false,
+    isBestSeller: true,
+    fabric: "Premium yün karışımlı kumaş",
+    care: "Kuru temizleme önerilir.",
   },
   {
     id: "6",
@@ -72,9 +97,14 @@ export const products: Product[] = [
     price: 1790,
     description: "Günlük kombinlere uyum sağlayan modern polo.",
     images: [],
-    color: "Lacivert",
+    color: "#172033",
+    colorName: "Lacivert",
     sizes: ["S", "M", "L", "XL"],
+    soldOutSizes: [],
     isNew: false,
+    isBestSeller: false,
+    fabric: "Pamuk ve viskon karışımı",
+    care: "30°C hassas yıkama.",
   },
   {
     id: "7",
@@ -85,9 +115,14 @@ export const products: Product[] = [
     description:
       "Katmanlı şehir kombinleri için tasarlanmış modern overshirt.",
     images: [],
-    color: "Kahve",
+    color: "#665244",
+    colorName: "Kahve",
     sizes: ["S", "M", "L", "XL"],
+    soldOutSizes: ["M"],
     isNew: true,
+    isBestSeller: false,
+    fabric: "Pamuk karışımlı dokulu kumaş",
+    care: "30°C hassas programda yıkama.",
   },
   {
     id: "8",
@@ -96,11 +131,16 @@ export const products: Product[] = [
     category: "pantolon",
     price: 2690,
     description:
-      "Rahat kalıp ve şık görünümü bir araya getiren pantolon.",
+      "Rahat kalıp ve şık görünümü bir araya getiren modern pantolon.",
     images: [],
-    color: "Siyah",
+    color: "#111111",
+    colorName: "Siyah",
     sizes: ["30", "32", "34", "36"],
+    soldOutSizes: [],
     isNew: false,
+    isBestSeller: true,
+    fabric: "Premium pamuk karışımlı kumaş",
+    care: "30°C hassas yıkama önerilir.",
   },
 ];
 
@@ -128,21 +168,17 @@ export function getProductsByCategory(slug: string): Product[] {
 }
 
 export function searchProducts(query: string): Product[] {
-  const normalizedQuery = query
-    .trim()
-    .toLocaleLowerCase("tr-TR");
+  const q = query.trim().toLocaleLowerCase("tr-TR");
 
-  if (!normalizedQuery) {
+  if (!q) {
     return products;
   }
 
   return products.filter((product) => {
-    const productName = product.name.toLocaleLowerCase("tr-TR");
-    const productCategory = product.category.toLocaleLowerCase("tr-TR");
-
     return (
-      productName.includes(normalizedQuery) ||
-      productCategory.includes(normalizedQuery)
+      product.name.toLocaleLowerCase("tr-TR").includes(q) ||
+      product.category.toLocaleLowerCase("tr-TR").includes(q) ||
+      product.colorName.toLocaleLowerCase("tr-TR").includes(q)
     );
   });
 }
