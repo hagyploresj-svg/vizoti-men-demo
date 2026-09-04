@@ -1,33 +1,45 @@
 import Hero from "@/components/Hero";
-import CategoryShowcase from "@/components/CategoryShowcase";
-import ProductSection from "@/components/ProductSection";
+import CategoryGrid from "@/components/CategoryGrid";
+import ProductGrid from "@/components/ProductGrid";
 import PromoBanner from "@/components/PromoBanner";
-import WhyMasterJeans from "@/components/WhyMasterJeans";
-import InstagramSection from "@/components/InstagramSection";
-import { getBestSellers, getNewArrivals } from "@/lib/products";
 
 export default function HomePage() {
-  const bestSellers = getBestSellers(8);
-  const newArrivals = getNewArrivals(8);
-
   return (
-    <>
+    <main>
       <Hero />
-      <CategoryShowcase />
-      <ProductSection
-        title="Çok Satanlar"
-        subtitle="Sezonun en çok tercih edilen parçaları."
-        products={bestSellers}
-        href="/kategori/yeni-gelenler"
+
+      <CategoryGrid />
+
+      <ProductGrid
+        title="YENİ GELENLER"
+        subtitle="Yeni sezonun öne çıkan parçaları."
+        limit={8}
       />
+
       <PromoBanner />
-      <ProductSection
-        title="Yeni Gelenler"
-        products={newArrivals}
-        href="/kategori/yeni-gelenler"
+
+      <ProductGrid
+        title="ÇOK SATANLAR"
+        subtitle="Vizoti Men seçkisinin favorileri."
+        limit={8}
       />
-      <WhyMasterJeans />
-      <InstagramSection />
-    </>
+
+      <section className="bg-[#f2efe8] px-6 py-28 text-center">
+        <p className="text-xs uppercase tracking-[0.35em] text-black/45">
+          VIZOTI MEN
+        </p>
+
+        <h2 className="mx-auto mt-6 max-w-4xl text-4xl font-semibold leading-tight text-black md:text-6xl">
+          Zamansız stil.
+          <br />
+          Modern erkek.
+        </h2>
+
+        <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-black/60">
+          Günlük giyimden özel anlara kadar modern erkek stilini sade,
+          güçlü ve zamansız parçalarla yeniden yorumluyoruz.
+        </p>
+      </section>
+    </main>
   );
 }
