@@ -7,11 +7,9 @@ export const products: Product[] = [
     name: "Milano Ceket",
     category: "ceket",
     price: 4990,
-    oldPrice: undefined,
     description: "Modern kesimli, şehir stiline uygun premium ceket.",
     images: [],
     color: "Siyah",
-    colors: ["Siyah", "Antrasit"],
     sizes: ["S", "M", "L", "XL"],
     stock: 12,
     isNew: true,
@@ -23,11 +21,10 @@ export const products: Product[] = [
     name: "Roma Pantolon",
     category: "pantolon",
     price: 2490,
-    oldPrice: undefined,
-    description: "Rahat kalıp ve modern görünümü bir araya getiren şehir pantolonu.",
+    description:
+      "Rahat kalıp ve modern görünümü bir araya getiren şehir pantolonu.",
     images: [],
     color: "Bej",
-    colors: ["Bej", "Siyah"],
     sizes: ["30", "32", "34", "36"],
     stock: 16,
     isNew: true,
@@ -39,11 +36,9 @@ export const products: Product[] = [
     name: "Como Gömlek",
     category: "gomlek",
     price: 1990,
-    oldPrice: undefined,
     description: "Minimal çizgilere sahip zamansız erkek gömleği.",
     images: [],
     color: "Beyaz",
-    colors: ["Beyaz", "Siyah"],
     sizes: ["S", "M", "L", "XL"],
     stock: 20,
     isNew: true,
@@ -55,11 +50,9 @@ export const products: Product[] = [
     name: "Siena Triko",
     category: "triko",
     price: 2290,
-    oldPrice: undefined,
     description: "Yeni sezon için sade ve güçlü triko tasarımı.",
     images: [],
     color: "Krem",
-    colors: ["Krem", "Antrasit"],
     sizes: ["S", "M", "L", "XL"],
     stock: 15,
     isNew: true,
@@ -72,10 +65,10 @@ export const products: Product[] = [
     category: "ceket",
     price: 5490,
     oldPrice: 6490,
-    description: "Keskin silüetiyle modern erkek stilini tamamlayan blazer.",
+    description:
+      "Keskin silüetiyle modern erkek stilini tamamlayan blazer.",
     images: [],
     color: "Antrasit",
-    colors: ["Antrasit", "Siyah"],
     sizes: ["S", "M", "L", "XL"],
     stock: 9,
     isNew: false,
@@ -87,11 +80,9 @@ export const products: Product[] = [
     name: "Firenze Polo",
     category: "triko",
     price: 1790,
-    oldPrice: undefined,
     description: "Günlük kombinlere uyum sağlayan modern polo.",
     images: [],
     color: "Lacivert",
-    colors: ["Lacivert", "Krem"],
     sizes: ["S", "M", "L", "XL"],
     stock: 18,
     isNew: false,
@@ -103,11 +94,10 @@ export const products: Product[] = [
     name: "Napoli Overshirt",
     category: "ceket",
     price: 3490,
-    oldPrice: undefined,
-    description: "Katmanlı şehir kombinleri için tasarlanmış modern overshirt.",
+    description:
+      "Katmanlı şehir kombinleri için tasarlanmış modern overshirt.",
     images: [],
     color: "Kahve",
-    colors: ["Kahve", "Siyah"],
     sizes: ["S", "M", "L", "XL"],
     stock: 14,
     isNew: true,
@@ -119,11 +109,10 @@ export const products: Product[] = [
     name: "Venezia Pantolon",
     category: "pantolon",
     price: 2690,
-    oldPrice: undefined,
-    description: "Rahat kalıp ve şık görünümü bir araya getiren pantolon.",
+    description:
+      "Rahat kalıp ve şık görünümü bir araya getiren pantolon.",
     images: [],
     color: "Siyah",
-    colors: ["Siyah", "Bej"],
     sizes: ["30", "32", "34", "36"],
     stock: 17,
     isNew: false,
@@ -164,12 +153,12 @@ export function searchProducts(query: string): Product[] {
   }
 
   return products.filter((product) => {
-    const productName = product.name.toLocaleLowerCase("tr-TR");
-    const productCategory = product.category.toLocaleLowerCase("tr-TR");
+    const name = product.name.toLocaleLowerCase("tr-TR");
+    const category = product.category.toLocaleLowerCase("tr-TR");
 
     return (
-      productName.includes(normalizedQuery) ||
-      productCategory.includes(normalizedQuery)
+      name.includes(normalizedQuery) ||
+      category.includes(normalizedQuery)
     );
   });
 }
